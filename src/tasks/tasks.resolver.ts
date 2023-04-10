@@ -12,6 +12,11 @@ export class TasksResolver {
     return this.tasksService.findAll()
   }
 
+  @Query(() => Task)
+  task(@Args('id') id: number) {
+    return this.tasksService.findTaskById(id)
+  }
+
   @Mutation(() => Task)
   createTask(@Args('taskInput') taskInput: CreateTaskInput) {
     return this.tasksService.createTask(taskInput)
