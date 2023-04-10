@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable, forwardRef } from '@nestjs/common'
 import { Task } from './task.entity'
 import { InjectRepository } from '@nestjs/typeorm/dist'
 import { Repository } from 'typeorm'
@@ -9,11 +9,19 @@ import { UsersService } from 'src/users/users.service'
 export class TasksService {
   constructor(
     @InjectRepository(Task) private tasksReposiroty: Repository<Task>,
-    private userService: UsersService
+    @Inject(forwardRef(() => UsersService)) private userService: UsersService
   ) {}
 
   findAll(): Promise<Task[]> {
     return this.tasksReposiroty.find()
+  }
+
+  findUserTasks(userId: number): Promise<Task[]> {
+    return this.tasksReposiroty.find({
+      where: {
+        userId
+      }
+    })
   }
 
   findTaskById(id: number): Promise<Task> {

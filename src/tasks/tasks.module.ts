@@ -7,6 +7,7 @@ import { UsersModule } from 'src/users/users.module'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Task]), UsersModule],
+  exports: [TasksService],
   providers: [TasksService, TasksResolver]
 })
 export class TasksModule {}
