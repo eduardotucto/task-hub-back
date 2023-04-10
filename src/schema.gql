@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type User {
+  id: Int!
+  name: String!
+  email: String!
+  password: String!
+  created_at: Float
+  tasks: [Task!]
+}
+
 type Task {
   id: Int!
   title: String!
@@ -11,11 +20,8 @@ type Task {
   status: String
   created_at: Float!
   updated_at: Float!
-}
-
-type User {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  userId: Int!
+  user: User!
 }
 
 type Query {
@@ -28,8 +34,6 @@ type Query {
 type Mutation {
   createTask(taskInput: CreateTaskInput!): Task!
   createUser(createUserInput: CreateUserInput!): User!
-  updateUser(updateUserInput: UpdateUserInput!): User!
-  removeUser(id: Int!): User!
 }
 
 input CreateTaskInput {
@@ -40,15 +44,12 @@ input CreateTaskInput {
   status: String
   created_at: Float!
   updated_at: Float!
+  userId: Int!
 }
 
 input CreateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
-}
-
-input UpdateUserInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  name: String!
+  email: String!
+  password: String!
+  created_at: Float
 }

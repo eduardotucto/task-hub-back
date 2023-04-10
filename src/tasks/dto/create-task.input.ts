@@ -1,5 +1,5 @@
-import { Field, Float, InputType } from '@nestjs/graphql'
-import { IsNotEmpty, MaxLength } from 'class-validator'
+import { Field, Float, InputType, Int } from '@nestjs/graphql'
+import { IsInt, IsNotEmpty, MaxLength } from 'class-validator'
 
 @InputType()
 export class CreateTaskInput {
@@ -25,4 +25,8 @@ export class CreateTaskInput {
 
   @Field(() => Float)
   updated_at: number
+
+  @IsInt()
+  @Field(() => Int)
+  userId: number
 }
