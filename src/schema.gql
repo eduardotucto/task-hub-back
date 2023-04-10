@@ -13,13 +13,23 @@ type Task {
   updated_at: Float!
 }
 
+type User {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   tasks: [Task!]!
   task(id: Float!): Task!
+  users: [User!]!
+  user(id: Int!): User!
 }
 
 type Mutation {
   createTask(taskInput: CreateTaskInput!): Task!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
 }
 
 input CreateTaskInput {
@@ -30,4 +40,15 @@ input CreateTaskInput {
   status: String
   created_at: Float!
   updated_at: Float!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
