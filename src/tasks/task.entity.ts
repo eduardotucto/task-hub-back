@@ -12,13 +12,13 @@ export class Task {
   @Field()
   title: string
 
-  @Column()
-  @Field()
-  description: string
+  @Column({ nullable: true })
+  @Field({ nullable: true })
+  description?: string
 
-  @Column()
-  @Field(() => Float)
-  due_date: number
+  @Column({ nullable: true })
+  @Field(() => Float, { nullable: true })
+  due_date?: number
 
   @Column({ nullable: true })
   @Field({ nullable: true })
