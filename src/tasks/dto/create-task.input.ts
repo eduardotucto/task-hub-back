@@ -1,7 +1,10 @@
 import { Field, Float, InputType } from '@nestjs/graphql'
+import { IsNotEmpty, MaxLength } from 'class-validator'
 
 @InputType()
 export class CreateTaskInput {
+  @IsNotEmpty()
+  @MaxLength(10)
   @Field()
   title: string
 
