@@ -1,19 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { Task } from './task.entity'
+import { InjectRepository } from '@nestjs/typeorm/dist'
+import { Repository } from 'typeorm'
 @Injectable()
 export class TasksService {
-  findAll(): Task[] {
-    return [
-      {
-        id: 1,
-        title: 'asd',
-        description: 'asdasd',
-        due_date: 1681080788015,
-        priority: 'asdasd',
-        status: 'asd',
-        created_at: 1681080788015,
-        updated_at: 1681080788015
-      }
-    ]
+  constructor(@InjectRepository(Task) private tasksReposiroty: Repository<Task>) {}
+  findAll(): Promise<Task[]> {
+    return this.tasksReposiroty.find()
   }
 }
