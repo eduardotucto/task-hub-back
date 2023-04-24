@@ -29,11 +29,11 @@ export class Task {
   @Field({ nullable: true })
   status?: string
 
-  @Column()
+  @Column({ type: 'bigint' })
   @Field(() => Float)
   created_at: number
 
-  @Column()
+  @Column({ type: 'bigint' })
   @Field(() => Float)
   updated_at: number
 

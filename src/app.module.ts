@@ -15,8 +15,12 @@ import { UsersModule } from './users/users.module'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql')
     }),
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'database.sqlite',
+      type: 'mysql',
+      host: 'sql.freedb.tech',
+      port: 3306,
+      username: 'freedb_demo123',
+      database: 'freedb_dbtest123123',
+      password: 'Rq4425n!4eVE*Vb',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true
     }),
